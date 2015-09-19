@@ -14,6 +14,7 @@ class SQLIteUitl{
 public:
 	SQLIteUitl();
 	~SQLIteUitl();
+	//void Initialize();
 	bool ConnectDB( string DB );
 	void DisonnectDB();
 	sqlite3 *dbfile;

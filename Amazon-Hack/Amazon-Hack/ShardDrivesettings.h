@@ -11,6 +11,8 @@
 #include <Winnetwk.h>
 #include<string>
 
+#include "SQLiteUtil.h"
+
 using namespace std;
 
 class CshardDrive
@@ -26,6 +28,8 @@ public:
 	void Initialize();
 	static CshardDrive* GetMappedDriveConfiguration();
 	void GetMapDriveConnection();
+	bool InsertMappedDriveConfiguration(string driveName, string drivePath, string userName, string password, bool* isExists);
+	bool GetConnection(string driveName);
 };
 
 #endif
