@@ -41,9 +41,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Mpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -61,6 +63,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Amazonmain.cpp" />
+    <ClCompile Include="Databaseconn.cpp" />
+    <ClCompile Include="ShardDrivesettings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Databaseconn.h" />
+    <ClInclude Include="ShardDrivesettings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

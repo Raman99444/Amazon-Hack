@@ -1,7 +1,5 @@
 
-#include <iostream>
-
-using namespace std;
+#include "ShardDrivesettings.h"
 
 int main()
 {
@@ -18,6 +16,11 @@ int main()
 	switch(l_option)
 	{
 	case 1:
+		cout<<" ######### Going to connect the Map Drive ############## \n";
+		CshardDrive mapdrive;
+		mapdrive.Initialize();
+		mapdrive.GetMapDriveConnection();
+		cout<<" ########## Map drive connection getting ended Here ########## \n";
 		break;
 	case 2:
 		break;
