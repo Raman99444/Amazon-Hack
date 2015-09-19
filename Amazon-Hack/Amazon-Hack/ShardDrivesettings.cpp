@@ -24,7 +24,7 @@ void CshardDrive::GetMapDriveConnection()
 	string drivePath="";
 	string userName = "";
 	string passWord = "";
-	cout<<" Enter the Drive path (\\ Your Ip\Drive_Name) format :: ";
+	cout<<" Enter the Drive path (\\ Your Ip\\ Drive_Name) format :: ";
 	cin>>drivePath;
 	//string drivePath = "\\\\192.168.4.181\\e";
 	cout<<"\n Enter the User Name :: ";
@@ -39,7 +39,7 @@ void CshardDrive::GetMapDriveConnection()
 	
 	NETRESOURCE nr;
 	DWORD res;
-	TCHAR szUserName[32]="", szPassword[32]="", szLocalName[32]="", szRemoteName[MAX_PATH]="";
+	TCHAR szUserName[32]=L"", szPassword[32]=L"", szLocalName[32]=L"", szRemoteName[MAX_PATH]=L"";
 
 	memcpy(szUserName, userName.c_str(), userName.length());
 	memcpy(szPassword, passWord.c_str(), passWord.length());

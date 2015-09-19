@@ -18,7 +18,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -63,12 +63,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Amazonmain.cpp" />
+    <ClCompile Include="CSVutil.cpp" />
     <ClCompile Include="Databaseconn.cpp" />
     <ClCompile Include="ShardDrivesettings.cpp" />
+    <ClCompile Include="SQLiteUtil.cpp" />
+    <ClCompile Include="SubscriptionUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CSVutil.h" />
     <ClInclude Include="Databaseconn.h" />
     <ClInclude Include="ShardDrivesettings.h" />
+    <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="SQLiteUtil.h" />
+    <ClInclude Include="SubscriptionUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
