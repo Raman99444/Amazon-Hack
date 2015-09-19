@@ -26,15 +26,15 @@ void CSVUtil::openFIle( string filename )
 // 		cout << "\n Error while opening file.\n";
 // 	}
 
-	//this->CSVContentsMap = this->SplitCSVLines(FileObj);
+	this->SplitCSVLines(FileObj);
 	
-
+	FileObj.close();
 }
 
 
 void CSVUtil::SplitCSVLines( fstream& str)
 {
-	map<LONG, vector<string>> result;
+	map<LONG,CSVFIleStruct> result;
 	string  line;
 	
 	if( str.good() )
@@ -43,16 +43,17 @@ void CSVUtil::SplitCSVLines( fstream& str)
 		{
 			vector<string> elems;
 			split(line, ',', elems);
-			vector<string> Second;
-			if( elems.size() != 4 )
+			CSVFIleStruct localstruct;
+			if( elems.size() != 3 )
 			{
 				cout << "\n No of elements in csv file is not equal to 3 ::\n FIle name ::" << this->CSVFileName << "\n Line is :: "<< line << "\n";
 				break;
 			}
 			LONG ID = atol( elems[ITEM_ID].c_str() );
-			Second.push_back(elems[ITEM_ATTRIBUITE]);
-			Second.push_back(elems[ITEM_VALUE]);
-			result.insert ( make_pair<LONG, vector<string>>( ID ,Second ) );
+			localstruct.attribuite = elems[ITEM_ATTRIBUITE];
+			localstruct.value = elems[ITEM_VALUE];
+
+			result.insert ( make_pair<LONG,CSVFIleStruct>(ID ,localstruct) );
 		}
 	}
 	else

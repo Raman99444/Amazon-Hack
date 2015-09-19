@@ -18,7 +18,10 @@ using namespace std;
 #define		ITEM_ATTRIBUITE		1
 #define		ITEM_VALUE			2
 
-
+struct CSVFIleStruct{
+	string attribuite;
+	string value;
+};
 // Creating class to handle CSV files.
 
 class CSVUtil {
@@ -34,7 +37,7 @@ private:
 
 	//map< int , vector<string> >
 	void SplitCSVLines( fstream& str);
-	map<LONG, vector<string>> CSVContentsMap;
+	map<LONG, CSVFIleStruct > CSVContentsMap;
 	vector<string> CSVUtil::split(const string &s, char delim, vector<string> &elems);
 };
 

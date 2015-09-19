@@ -1,5 +1,6 @@
 
 #include "ShardDrivesettings.h"
+#include "CSVutil.h"
 
 int main()
 {
@@ -12,6 +13,10 @@ int main()
 	cout<<" ######\t 3. Search attribute \t\t########################### \n";
 	cout<<" ############################## END ############################### \n";
 	cout<<" Enter the option to perform :: \t ";
+
+	CSVUtil CSVObj;
+	CSVObj.openFIle( "C:\\Users\\Administrator\\Desktop\\anji.csv" );
+	cout << " \n\n Finished Parsing CSV file \n\n";
 	cin>>l_option;
 	switch(l_option)
 	{
