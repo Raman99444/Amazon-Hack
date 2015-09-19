@@ -34,7 +34,7 @@ void CSVUtil::openFIle( string filename )
 
 void CSVUtil::SplitCSVLines( fstream& str)
 {
-	map<LONG,CSVFIleStruct> result;
+	//map<LONG,vector<CSVFIleStruct>> result;
 	string  line;
 	
 	if( str.good() )
@@ -52,8 +52,18 @@ void CSVUtil::SplitCSVLines( fstream& str)
 			LONG ID = atol( elems[ITEM_ID].c_str() );
 			localstruct.attribuite = elems[ITEM_ATTRIBUITE];
 			localstruct.value = elems[ITEM_VALUE];
+			vector<CSVFIleStruct> local;
 
-			result.insert ( make_pair<LONG,CSVFIleStruct>(ID ,localstruct) );
+			if( this->CSVContentsMap.find(ID) != this->CSVContentsMap.end() )
+			{
+				map<LONG, vector<CSVFIleStruct>>::const_iterator it = this->CSVContentsMap.find(ID);
+				local = it->second;
+				this->CSVContentsMap.erase(it);
+			}
+			local.push_back(localstruct);
+			this->CSVContentsMap.insert ( make_pair<LONG,vector<CSVFIleStruct>>(ID ,local) );
+
+			//cout << "Line is :: "<< line << "\n";
 		}
 	}
 	else
@@ -62,7 +72,7 @@ void CSVUtil::SplitCSVLines( fstream& str)
 		throw( "Unable to read the file.." );
 		return;
 	}
-	this->CSVContentsMap = result;
+	//this->CSVContentsMap = result;
 	//return result;
 }
 

@@ -37,7 +37,7 @@ private:
 
 	//map< int , vector<string> >
 	void SplitCSVLines( fstream& str);
-	map<LONG, CSVFIleStruct > CSVContentsMap;
+	map<LONG, vector<CSVFIleStruct> > CSVContentsMap;
 	vector<string> CSVUtil::split(const string &s, char delim, vector<string> &elems);
 };
 
