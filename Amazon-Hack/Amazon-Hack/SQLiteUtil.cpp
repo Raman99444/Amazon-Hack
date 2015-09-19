@@ -11,6 +11,10 @@ SQLIteUitl::~SQLIteUitl()
 {
 
 }
+//void SQLIteUitl::Initialize()
+//{
+//	this->isOpenDB = false;
+//}
 
 bool SQLIteUitl::ConnectDB( string DB )
 {
@@ -45,7 +49,7 @@ int SQLIteUitl::ExecuiteQuery( string str )
 			result=res;
 			sqlite3_finalize(statement);
 		}
-		delete[] query;
+		//delete[] query;
 		return result;
 	}
 	delete[] query;
