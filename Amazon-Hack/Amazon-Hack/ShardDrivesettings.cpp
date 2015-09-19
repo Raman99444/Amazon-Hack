@@ -21,17 +21,31 @@ void CshardDrive::Initialize()
 void CshardDrive::GetMapDriveConnection()
 {
 	string driveName = "R";
-	string drivePath="";
-	string userName = "";
-	string passWord = "";
-	cout<<" Enter the Drive path (\\ Your Ip\Drive_Name) format :: ";
-	cin>>drivePath;
-	//string drivePath = "\\\\192.168.4.181\\e";
-	cout<<"\n Enter the User Name :: ";
-	cin>>userName;
-	cout<<" \nEnter the Password :: ";
-	cin>>passWord;
-	cout<<"\n Going to connected the Map drive \n";
+	//string drivePath="";
+	string userName = "Administrator";
+	string passWord = "Vembu123$";
+	//cout<<" Enter the Drive path (\\ Your Ip\Drive_Name) format :: ";
+	//cin>>drivePath;
+	string drivePath = "\\\\192.168.4.181\\e";
+	//cout<<"\n Enter the User Name :: ";
+	//cin>>userName;
+	//cout<<" \nEnter the Password :: ";
+	//cin>>passWord;
+	//cout<<"\n Going to connected the Map drive \n";
+
+	string driveListQuery = "select drivename, drivepath, username, password from MAPPED_DRIVE_CONFIGURATION";
+
+	SQLIteUitl conn;
+	bool isconn = conn.ConnectDB("AMAZEHACK.db3");
+
+	if(isconn)
+	{
+		conn.GetTableData(driveListQuery);
+	}else
+	{
+		cout<<" ######### Unable to connect the DataBase ######## \n";
+	}
+
 	cout<<" drivePath :: "<<drivePath<< " userName :: "<<userName<< " passWord :: "<<passWord<< "\n";
 	this->shardDriveList->clear();
 
@@ -95,6 +109,7 @@ bool CshardDrive::InsertMappedDriveConfiguration(string driveName, string driveP
 	{
 		cout << "The Drive Path or Drive Name already available \n";
 		*isExists = true;
+		conn.DisonnectDB();
 		return false;
 	}
 
@@ -106,7 +121,6 @@ bool CshardDrive::InsertMappedDriveConfiguration(string driveName, string driveP
 	addDriveQuery.append(userName);
 	addDriveQuery.append("','");
 	addDriveQuery.append(password);
-	addDriveQuery.append("','");
 	addDriveQuery.append("','Success')");
 		
 	int mappedDriveID = 0;
@@ -126,7 +140,7 @@ bool CshardDrive::InsertMappedDriveConfiguration(string driveName, string driveP
 			this->shardDriveList->insert(pair<string,string>(driveName, drivePath));	
 		}
 	}
-
+	conn.DisonnectDB();
 	return isInserted;
 };
 

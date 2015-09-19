@@ -88,5 +88,5 @@ void SQLIteUitl::GetTableData( string Query )
 
 		}
 	}
-	delete[] query;
+	//delete[] query;
 }
