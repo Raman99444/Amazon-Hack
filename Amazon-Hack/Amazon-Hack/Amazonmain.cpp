@@ -19,6 +19,8 @@ int main()
 	{
 	case 1:
 		break;
+	case 2:
+		break;
 	default:
 		cout<<" Please enter the valid option to perform the task. Thanks!!!! \n";
 	}
